@@ -1,32 +1,71 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableHighlight,
+} from 'react-native';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import * as Actions from '../redux/actions';
+import { SearchBar, Button } from 'react-native-elements';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-export default class Search extends Component {
+class Search extends Component {
   constructor() {
     super();
+    this.stare = {
+      query: '',
+    };
   }
   render() {
-    console.log(axios);
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Search</Text>
+        <SearchBar
+          containerStyle={{ height: 50, width: 200 }}
+          noIcon
+          round
+          onChangeText={query => this.setState({ query })}
+          placeholder="Type Here..."
+        />
+        <TouchableHighlight
+          onPress={() => {
+            this.props.pictureQuery(this.state.query);
+          }}
+          style={{
+            backgroundColor: 'blue',
+            height: 50,
+            width: 100,
+            margin: 20,
+            borderRadius: 75,
+          }}>
+          <Text style={styles.welcome}>Search</Text>
+        </TouchableHighlight>
       </View>
     );
   }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    pictureQuery: query => {
+      dispatch(Actions.getData(query));
+    },
+  };
+};
+const mapStateToProps = (state, ownProps) => {
+  return {
+    isLoading: state.isLoading,
+    history: state.history,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
@@ -34,6 +73,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    color: '#fff',
   },
   instructions: {
     textAlign: 'center',

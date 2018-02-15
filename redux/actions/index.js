@@ -11,6 +11,10 @@ export const getData = query => {
           config.pixabay
         }&q=${query}&image_type=photo&pretty=true`
       )
-      .then(response => dispatch({ type: PICTURE_QUERY, data: response.data }));
+      .then(response => {
+        console.log('query here', query);
+        console.log(response.data);
+        return dispatch({ type: PICTURE_QUERY, data: response.data });
+      });
   };
 };
