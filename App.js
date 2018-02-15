@@ -1,12 +1,8 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import axios from 'axios';
+import RootStackNavigator from './navigation/stack-navigation.js';
+import { Provider } from 'react-redux';
+import store from './redux/store.js';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -20,13 +16,12 @@ export default class App extends Component {
     super();
   }
   render() {
-    console.log(axios);
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Nativ</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <RootStackNavigator />
+        </View>
+      </Provider>
     );
   }
 }
