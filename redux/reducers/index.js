@@ -7,7 +7,8 @@ let dataState = { data: [], loading: true };
 const pictureReducer = (state = dataState, action) => {
   switch (action.type) {
     case PICTURE_QUERY:
-      state = Object.assign({}, state, { data: action.data, loading: false });
+      //  console.log('hereerrr', action.data);
+      state = Object.assign({}, action.data);
       return state;
     default:
       return state;

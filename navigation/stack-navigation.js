@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import Search from '../screens/search';
+import ImageList from '../screens/imagelist';
 
 const RootStackNavigator = StackNavigator(
   {
     Search: {
       screen: Search,
+    },
+    ImageList: {
+      screen: ImageList,
     },
   },
   {
