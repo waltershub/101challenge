@@ -6,6 +6,7 @@ import {
   View,
   TextInput,
   TouchableHighlight,
+  Image,
 } from 'react-native';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -15,9 +16,17 @@ import { SearchBar, Button } from 'react-native-elements';
 class Search extends Component {
   constructor() {
     super();
-    this.stare = {
+    this.state = {
       query: '',
     };
+
+    this.searchButtonPress = this.searchButtonPress.bind(this);
+  }
+
+  searchButtonPress() {
+    if (this.state.query !== '') {
+      this.props.pictureQuery(this.state.query);
+    }
   }
   render() {
     return (
@@ -30,9 +39,7 @@ class Search extends Component {
           placeholder="Type Here..."
         />
         <TouchableHighlight
-          onPress={() => {
-            this.props.pictureQuery(this.state.query);
-          }}
+          onPress={this.searchButtonPress}
           style={{
             backgroundColor: 'blue',
             height: 50,

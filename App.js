@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, Image } from 'react-native';
 import RootStackNavigator from './navigation/stack-navigation.js';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';

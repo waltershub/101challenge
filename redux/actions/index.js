@@ -12,8 +12,7 @@ export const getData = query => {
         }&q=${query}&image_type=photo&pretty=true`
       )
       .then(response => {
-        console.log('query here', query);
-        console.log(response.data);
+        //console.log(response.data);
         return dispatch({ type: PICTURE_QUERY, data: response.data });
       });
   };
