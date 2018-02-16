@@ -12,11 +12,14 @@ import {
 
 const PictureItem = props => (
   <View>
-    <Image
-      style={{ height: 200, width: 200, resizeMode: 'contain' }}
-      source={{ uri: props.image }}
-    />
+    <TouchableHighlight onPress={() => props.goToDetailed(props.imageObject)}>
+      <Image style={styles.image} source={{ uri: props.image }} />
+    </TouchableHighlight>
   </View>
 );
 
 export default PictureItem;
+
+const styles = StyleSheet.create({
+  image: { height: 200, width: 200, resizeMode: 'contain' },
+});

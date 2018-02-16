@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import Search from '../screens/search';
 import ImageList from '../screens/imagelist';
-
+import DetailedView from '../screens/detailedview';
 const RootStackNavigator = StackNavigator(
   {
     Search: {
@@ -15,6 +15,12 @@ const RootStackNavigator = StackNavigator(
       screen: ImageList,
       navigationOptions: {
         title: 'Images',
+      },
+    },
+    DetailedView: {
+      screen: DetailedView,
+      navigationOptions: {
+        title: 'Detailed',
       },
     },
   },

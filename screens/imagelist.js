@@ -20,14 +20,19 @@ class ImageList extends Component {
     this.state = {
       query: '',
     };
+
+    this.goToDetailed = this.goToDetailed.bind(this);
+  }
+
+  goToDetailed(image) {
+    this.props.navigation.navigate('DetailedView', { image });
   }
 
   render() {
-    console.log('props', this.props.pictures.hits);
     let pictures = this.props.pictures.hits || [];
     return (
       <View style={styles.container}>
-        <PictureList pictures={pictures} />
+        <PictureList goToDetailed={this.goToDetailed} pictures={pictures} />
       </View>
     );
   }
