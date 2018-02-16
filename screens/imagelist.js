@@ -13,7 +13,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import * as Actions from '../redux/actions';
 import { SearchBar, Button } from 'react-native-elements';
-
+import PictureList from '../components/Picturelist';
 class ImageList extends Component {
   constructor() {
     super();
@@ -24,18 +24,10 @@ class ImageList extends Component {
 
   render() {
     console.log('props', this.props.pictures.hits);
-    let images = this.props.pictures.hits || [];
+    let pictures = this.props.pictures.hits || [];
     return (
       <View style={styles.container}>
-        <ScrollView
-          style={{
-            flex: 1,
-            flexGrow: 1,
-          }}>
-          {images.map(picture => (
-            <PictureItem key={picture.id} image={picture.previewURL} />
-          ))}
-        </ScrollView>
+        <PictureList pictures={pictures} />
       </View>
     );
   }
@@ -77,14 +69,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-const PictureItem = props => (
-  <View>
-    <Image
-      style={{ height: 200, width: 200, resizeMode: 'contain' }}
-      source={{ uri: props.image }}
-    />
-  </View>
-);
 
 //<PictureItem key={picture.id} image={picture.previewURl} />

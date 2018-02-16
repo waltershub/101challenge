@@ -9,15 +9,18 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import PictureItem from './PictureItem.js';
+import PictureItem from './pictureItem.js';
 
 const PictureLIst = props => (
-  <View>
-    <Image
-      style={{ height: 200, width: 200, resizeMode: 'contain' }}
-      source={{ uri: props.image }}
-    />
-  </View>
+  <ScrollView
+    style={{
+      flex: 1,
+      flexGrow: 1,
+    }}>
+    {props.pictures.map(picture => (
+      <PictureItem key={picture.id} image={picture.previewURL} />
+    ))}
+  </ScrollView>
 );
 
-export default PictureList;
+export default PictureLIst;
