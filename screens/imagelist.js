@@ -27,8 +27,11 @@ class ImageList extends Component {
     let images = this.props.pictures.hits || [];
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Images</Text>
-        <ScrollView>
+        <ScrollView
+          style={{
+            flex: 1,
+            flexGrow: 1,
+          }}>
           {images.map(picture => (
             <PictureItem key={picture.id} image={picture.previewURL} />
           ))}
@@ -47,7 +50,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 const mapStateToProps = (state, ownProps) => {
   return {
-    isLoading: state.isLoading,
     history: state.history,
     pictures: state.pictureReducer,
   };

@@ -7,9 +7,15 @@ const RootStackNavigator = StackNavigator(
   {
     Search: {
       screen: Search,
+      navigationOptions: {
+        title: 'Search',
+      },
     },
     ImageList: {
       screen: ImageList,
+      navigationOptions: {
+        title: 'Images',
+      },
     },
   },
   {
@@ -18,7 +24,7 @@ const RootStackNavigator = StackNavigator(
         gesturesEnabled: false,
       },
       headerStyle: {
-        backgroundColor: '#e9e9e9',
+        backgroundColor: '#F5FCFF',
         borderColor: 'transparent',
       },
       statusBarStyle: 'light-content',
