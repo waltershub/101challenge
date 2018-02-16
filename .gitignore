@@ -1,6 +1,7 @@
 # OSX
 #
 .DS_Store
+*/config.js
 
 # Xcode
 #
@@ -51,4 +52,3 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
-*/config.js
