@@ -2,7 +2,8 @@ import axios from 'axios';
 import config from '../../config/config';
 
 export const PICTURE_QUERY = 'PICTURE_QUERY';
-
+export const HISTORY = 'HISTORY';
+export const getHistory = query => dispatch({ type: HISTORY, data: query });
 export const getData = query => {
   return dispatch => {
     axios

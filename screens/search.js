@@ -27,6 +27,7 @@ class Search extends Component {
   searchButtonPress() {
     if (this.state.query !== '') {
       this.props.pictureQuery(this.state.query);
+      this.props.addHistory(this.state.query);
       this.props.navigation.navigate('ImageList');
     }
   }
@@ -57,12 +58,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     pictureQuery: query => {
       dispatch(Actions.getData(query));
     },
+    addHistory: query => {
+      dispatch(Actions.getHistory(query));
+    },
   };
 };
 const mapStateToProps = (state, ownProps) => {
   return {
     isLoading: state.isLoading,
-    history: state.history,
+    history: state.historyReducer,
   };
 };
 
