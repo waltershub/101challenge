@@ -33,14 +33,7 @@ class Search extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ImageBackground
-          source={backround}
-          style={{
-            width: '100%',
-            height: '100%',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+        <ImageBackground source={backround} style={styles.backround}>
           <SearchBar
             containerStyle={{ height: 50, width: 200 }}
             noIcon
@@ -50,14 +43,8 @@ class Search extends Component {
           />
           <TouchableHighlight
             onPress={this.searchButtonPress}
-            style={{
-              backgroundColor: 'blue',
-              height: 50,
-              width: 100,
-              margin: 20,
-              borderRadius: 75,
-            }}>
-            <Text style={styles.welcome}>Search</Text>
+            style={styles.searchBotton}>
+            <Text style={styles.search}>Search</Text>
           </TouchableHighlight>
         </ImageBackground>
       </View>
@@ -88,15 +75,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
+  search: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
     color: '#fff',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  backround: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  searchBotton: {
+    backgroundColor: 'blue',
+    height: 50,
+    width: 100,
+    margin: 20,
+    borderRadius: 75,
   },
 });

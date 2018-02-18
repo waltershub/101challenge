@@ -30,6 +30,12 @@ class DetailedView extends Component {
         props.navigation.state.params.image.imageHeight
       }`,
     };
+    this.tagPress = this.tagPress.bind(this);
+  }
+
+  tagPress(tag) {
+    this.props.pictureQuery(tag);
+    this.props.navigation.navigate('ImageList');
   }
 
   render() {
@@ -50,7 +56,10 @@ class DetailedView extends Component {
         <User user={this.state.user} userImage={this.state.userImage} />
         <Text style={styles.tagHeader}>Tags</Text>
         {this.state.tags.map(tag => (
-          <Text style={styles.tags} key={uniqueid()}>
+          <Text
+            style={styles.tags}
+            key={uniqueid()}
+            onPress={() => this.tagPress(tag)}>
             {tag}{' '}
           </Text>
         ))}

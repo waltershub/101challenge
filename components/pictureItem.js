@@ -5,16 +5,16 @@ import {
   Text,
   View,
   TextInput,
-  TouchableHighlight,
+  TouchableOpacity,
   Image,
   ScrollView,
 } from 'react-native';
 
 const PictureItem = props => (
   <View>
-    <TouchableHighlight onPress={() => props.goToDetailed(props.imageObject)}>
+    <TouchableOpacity onPress={() => props.goToDetailed(props.imageObject)}>
       <Image style={styles.image} source={{ uri: props.image }} />
-    </TouchableHighlight>
+    </TouchableOpacity>
   </View>
 );
 
