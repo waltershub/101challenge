@@ -27,7 +27,6 @@ class Search extends Component {
   searchButtonPress() {
     if (this.state.query !== '') {
       this.props.pictureQuery(this.state.query);
-      this.props.addHistory(this.state.query);
       this.props.navigation.navigate('ImageList');
     }
   }
