@@ -12,6 +12,7 @@ import {
 import { Tile, Avatar } from 'react-native-elements';
 import { connect } from 'react-redux';
 import * as Actions from '../redux/actions';
+import User from '../components/user';
 
 class DetailedView extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class DetailedView extends Component {
     console.log(this.props.navigation.state.params.image);
     return (
       <ScrollView
+        style={{ backgroundColor: '#F5F3EE' }}
         contentContainerStyle={{
           alignItems: 'center',
         }}>
@@ -42,17 +44,17 @@ class DetailedView extends Component {
             uri: this.state.image,
           }}
           featured
-          caption={this.props.navigation.state.params.image.tags}
         />
-        <Text>{`Resolution: ${this.state.resolution}`}</Text>
-
-        <View style={{ padding: 10, alignItems: 'center' }}>
-          <Text>User</Text>
-          <Avatar medium rounded source={{ uri: this.state.userImage }} />
-          <Text>{this.state.user}</Text>
-        </View>
-        <Text>Tags</Text>
-        {this.state.tags.map((tag, i) => <Text key={i}>{tag} </Text>)}
+        <Text style={styles.picInfo}>{`Resolution: ${
+          this.state.resolution
+        }`}</Text>
+        <User user={this.state.user} userImage={this.state.userImage} />
+        <Text style={styles.tagHeader}>Tags</Text>
+        {this.state.tags.map((tag, i) => (
+          <Text style={styles.tags} key={i}>
+            {tag}{' '}
+          </Text>
+        ))}
       </ScrollView>
     );
   }
@@ -80,4 +82,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  picInfo: {
+    fontSize: 15,
+    color: 'red',
+    textAlign: 'right',
+  },
+  user: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  tagHeader: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#4A8AC3',
+  },
+  tags: {
+    fontSize: 15,
+    fontStyle: 'italic',
+    color: '#4A8AC3',
+  },
 });
+
+// const User = props => (
+//   <View
+//     style={{
+//       backgroundColor: '#FF9009',
+//       padding: 10,
+//       flexDirection: 'row',
+//     }}>
+//     <Text style={styles.user}>User: </Text>
+//     <Avatar small rounded source={{ uri: props.userImage }} />
+//     <Text style={styles.user}>{'  ' + props.user}</Text>
+//   </View>
+// );
