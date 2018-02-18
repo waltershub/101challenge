@@ -1,6 +1,6 @@
 # 101challenge
 
-> Pixabay image search react Native
+> Pixabay image search React Native
 
 ## Developer
 
@@ -25,6 +25,6 @@ create config.js in config directory using the configexample.js as a guide
 
 ## Screenshot
 
-![](readme/ss1.pngraw=true)
-![](readme/ss2.pngraw=true)
-![](readme/ss3.pngraw=true)
+![](readme/ss1.png?raw=true)
+![](readme/ss2.png?raw=true)
+![](readme/ss3.png?raw=true)
