@@ -14,7 +14,7 @@ Walter Shub
 ## Usage
 Follow  React Native Setup https://facebook.github.io/react-native/docs/getting-started.html
 
-#create config.js in config directory using the configexample.js as a guide
+**create config.js in config directory using the configexample.js as a guide**
 
 Run ```npm install``` to install all node modules.
 
