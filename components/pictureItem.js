@@ -21,5 +21,5 @@ const PictureItem = props => (
 export default PictureItem;
 
 const styles = StyleSheet.create({
-  image: { height: 100, width: 100, margin: 20, resizeMode: 'contain' },
+  image: { height: 200, width: 400, margin: 20, resizeMode: 'contain' },
 });

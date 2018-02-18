@@ -13,13 +13,7 @@ import {
 import PictureItem from './pictureItem.js';
 
 const PictureLIst = props => (
-  <ScrollView
-    style={styles.scroll}
-    contentContainerStyle={{
-      justifyContent: 'center',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-    }}>
+  <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
     {props.pictures.map(picture => (
       <PictureItem
         key={picture.id}
@@ -37,5 +31,11 @@ const styles = StyleSheet.create({
   scroll: {
     flex: 1,
     flexGrow: 1,
+    width: '100%',
+  },
+  content: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
   },
 });
