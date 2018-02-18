@@ -25,6 +25,6 @@ create config.js in config directory using the configexample.js as a guide
 
 ## Screenshot
 
-![](assets/readme/ss1.pngraw=true)
-![](assets/readme/ss2.pngraw=true)
-![](assets/readme/ss3.pngraw=true)
+![](readme/ss1.pngraw=true)
+![](readme/ss2.pngraw=true)
+![](readme/ss3.pngraw=true)
