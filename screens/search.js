@@ -28,6 +28,7 @@ class Search extends Component {
     if (this.state.query !== '') {
       this.props.pictureQuery(this.state.query);
       this.props.navigation.navigate('ImageList');
+      this.search.clearText();
     }
   }
   render() {
@@ -40,6 +41,7 @@ class Search extends Component {
             round
             onChangeText={query => this.setState({ query })}
             placeholder="Type Here..."
+            ref={search => (this.search = search)}
           />
           <TouchableHighlight
             onPress={this.searchButtonPress}
