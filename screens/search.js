@@ -7,12 +7,13 @@ import {
   TextInput,
   TouchableHighlight,
   Image,
+  ImageBackground,
 } from 'react-native';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import * as Actions from '../redux/actions';
 import { SearchBar, Button } from 'react-native-elements';
-
+const backround = require('../assets/images/searchbackround.jpg');
 class Search extends Component {
   constructor() {
     super();
@@ -32,24 +33,33 @@ class Search extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <SearchBar
-          containerStyle={{ height: 50, width: 200 }}
-          noIcon
-          round
-          onChangeText={query => this.setState({ query })}
-          placeholder="Type Here..."
-        />
-        <TouchableHighlight
-          onPress={this.searchButtonPress}
+        <ImageBackground
+          source={backround}
           style={{
-            backgroundColor: 'blue',
-            height: 50,
-            width: 100,
-            margin: 20,
-            borderRadius: 75,
+            width: '100%',
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}>
-          <Text style={styles.welcome}>Search</Text>
-        </TouchableHighlight>
+          <SearchBar
+            containerStyle={{ height: 50, width: 200 }}
+            noIcon
+            round
+            onChangeText={query => this.setState({ query })}
+            placeholder="Type Here..."
+          />
+          <TouchableHighlight
+            onPress={this.searchButtonPress}
+            style={{
+              backgroundColor: 'blue',
+              height: 50,
+              width: 100,
+              margin: 20,
+              borderRadius: 75,
+            }}>
+            <Text style={styles.welcome}>Search</Text>
+          </TouchableHighlight>
+        </ImageBackground>
       </View>
     );
   }
@@ -75,6 +85,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#F5FCFF',
   },
   welcome: {

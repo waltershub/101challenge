@@ -20,7 +20,9 @@ class DetailedView extends Component {
       query: '',
       image: props.navigation.state.params.image.webformatURL,
       user: props.navigation.state.params.image.user,
-      userImage: props.navigation.state.params.image.userImageURL,
+      userImage:
+        props.navigation.state.params.image.userImageURL ||
+        'https://upload.wikimedia.org/wikipedia/commons/c/ce/Question-mark-face.jpg',
       tags: props.navigation.state.params.image.tags.split(', '),
       resolution: `${props.navigation.state.params.image.imageWidth}×${
         props.navigation.state.params.image.imageHeight
@@ -31,7 +33,10 @@ class DetailedView extends Component {
   render() {
     console.log(this.props.navigation.state.params.image);
     return (
-      <View>
+      <ScrollView
+        contentContainerStyle={{
+          alignItems: 'center',
+        }}>
         <Tile
           imageSrc={{
             uri: this.state.image,
@@ -39,18 +44,16 @@ class DetailedView extends Component {
           featured
           caption={this.props.navigation.state.params.image.tags}
         />
-        <View
-          style={{
-            flex: 1,
-            flexGrow: 1,
-            flexDirection: 'row',
-            justifyContent: 'center',
-          }}>
-          <Avatar large rounded source={{ uri: this.state.userImage }} />
-          <Text style={{ width: 100, height: 100 }}>{this.state.user}</Text>
-        </View>
         <Text>{`Resolution: ${this.state.resolution}`}</Text>
-      </View>
+
+        <View style={{ padding: 10, alignItems: 'center' }}>
+          <Text>User</Text>
+          <Avatar medium rounded source={{ uri: this.state.userImage }} />
+          <Text>{this.state.user}</Text>
+        </View>
+        <Text>Tags</Text>
+        {this.state.tags.map((tag, i) => <Text key={i}>{tag} </Text>)}
+      </ScrollView>
     );
   }
 }

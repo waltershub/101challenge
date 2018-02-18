@@ -8,11 +8,18 @@ import {
   TouchableHighlight,
   Image,
   ScrollView,
+  ListVIew,
 } from 'react-native';
 import PictureItem from './pictureItem.js';
 
 const PictureLIst = props => (
-  <ScrollView style={styles.scroll}>
+  <ScrollView
+    style={styles.scroll}
+    contentContainerStyle={{
+      justifyContent: 'center',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+    }}>
     {props.pictures.map(picture => (
       <PictureItem
         key={picture.id}
