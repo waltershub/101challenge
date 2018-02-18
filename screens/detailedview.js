@@ -13,6 +13,7 @@ import { Tile, Avatar } from 'react-native-elements';
 import { connect } from 'react-redux';
 import * as Actions from '../redux/actions';
 import User from '../components/user';
+import uniqueid from 'lodash.uniqueid';
 
 class DetailedView extends Component {
   constructor(props) {
@@ -35,10 +36,8 @@ class DetailedView extends Component {
     console.log(this.props.navigation.state.params.image);
     return (
       <ScrollView
-        style={{ backgroundColor: '#F5F3EE' }}
-        contentContainerStyle={{
-          alignItems: 'center',
-        }}>
+        style={styles.container}
+        contentContainerStyle={styles.scrollContent}>
         <Tile
           imageSrc={{
             uri: this.state.image,
@@ -50,8 +49,8 @@ class DetailedView extends Component {
         }`}</Text>
         <User user={this.state.user} userImage={this.state.userImage} />
         <Text style={styles.tagHeader}>Tags</Text>
-        {this.state.tags.map((tag, i) => (
-          <Text style={styles.tags} key={i}>
+        {this.state.tags.map(tag => (
+          <Text style={styles.tags} key={uniqueid()}>
             {tag}{' '}
           </Text>
         ))}
@@ -78,9 +77,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(DetailedView);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    backgroundColor: '#F5F3EE',
+  },
+  scrollContent: {
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5F3EE',
   },
   picInfo: {
     fontSize: 15,

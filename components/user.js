@@ -12,12 +12,7 @@ import {
 import { Avatar } from 'react-native-elements';
 
 const User = props => (
-  <View
-    style={{
-      backgroundColor: '#FF9009',
-      padding: 10,
-      flexDirection: 'row',
-    }}>
+  <View style={styles.container}>
     <Text style={styles.user}>User: </Text>
     <Avatar small rounded source={{ uri: props.userImage }} />
     <Text style={styles.user}>{'  ' + props.user}</Text>
@@ -27,6 +22,11 @@ const User = props => (
 export default User;
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FF9009',
+    padding: 10,
+    flexDirection: 'row',
+  },
   user: {
     fontSize: 20,
     fontWeight: 'bold',
