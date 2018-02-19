@@ -25,7 +25,9 @@ class DetailedView extends Component {
       userImage:
         props.navigation.state.params.image.userImageURL ||
         'https://upload.wikimedia.org/wikipedia/commons/c/ce/Question-mark-face.jpg',
-      tags: props.navigation.state.params.image.tags.split(', '),
+      tags: props.navigation.state.params.image.tags
+        .replace(/[^\w\s]|_/g, '')
+        .split(' '),
       resolution: `${props.navigation.state.params.image.imageWidth}×${
         props.navigation.state.params.image.imageHeight
       }`,
