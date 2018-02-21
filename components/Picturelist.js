@@ -9,20 +9,24 @@ import {
   Image,
   ScrollView,
   ListVIew,
+  FlatList,
 } from 'react-native';
 import PictureItem from './pictureItem.js';
 
 const PictureLIst = props => (
-  <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
-    {props.pictures.map(picture => (
+  <FlatList
+    data={props.pictures}
+    renderItem={({ item }) => (
       <PictureItem
-        key={picture.id}
-        imageObject={picture}
+        key={item.id}
+        imageObject={item}
         goToDetailed={props.goToDetailed}
-        image={picture.previewURL}
+        image={item.previewURL}
       />
-    ))}
-  </ScrollView>
+    )}
+    keyExtractor={item => item.id}
+    numColumns={2}
+  />
 );
 
 export default PictureLIst;
